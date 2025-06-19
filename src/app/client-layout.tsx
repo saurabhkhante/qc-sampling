@@ -1,15 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Box, IconButton, useColorMode, ChakraProvider, ColorModeScript, extendTheme } from "@chakra-ui/react";
+import { Box, IconButton, ChakraProvider, useColorMode } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-
-const theme = extendTheme({
-  config: {
-    initialColorMode: "light",
-    useSystemColorMode: false,
-  },
-});
 
 function ColorModeToggle() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -34,8 +27,7 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    <ChakraProvider>
       <Box>
         <ColorModeToggle />
         {children}
